@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Techhunt.SalaryManagement.Domain", "Techhunt.SalaryManagement.Domain\Techhunt.SalaryManagement.Domain.csproj", "{C7797FE1-5819-401E-A140-B11C42D77CA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{40DCDDB3-B08F-4DA7-8356-42101241ADB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Techhunt.SalaryManagement.Application", "Techhunt.SalaryManagement.Application\Techhunt.SalaryManagement.Application.csproj", "{BE15E8D9-2B10-4D74-926D-28EC4FAD942F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Techhunt.SalaryManagement.Infrastructure", "Techhunt.SalaryManagement.Infrastructure\Techhunt.SalaryManagement.Infrastructure.csproj", "{D7D877B3-00B4-4091-97FD-19C5EF2F85C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Techhunt.SalaryManagement.Api", "Techhunt.SalaryManagement.Api\Techhunt.SalaryManagement.Api.csproj", "{1041B40B-9DBE-459A-8882-1B02579F876D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Techhunt.SalaryManagement.Tests", "..\tests\Techhunt.SalaryManagement.Tests\Techhunt.SalaryManagement.Tests.csproj", "{495F6E14-DA26-4D52-9059-EFE6910A78BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7797FE1-5819-401E-A140-B11C42D77CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7797FE1-5819-401E-A140-B11C42D77CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7797FE1-5819-401E-A140-B11C42D77CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7797FE1-5819-401E-A140-B11C42D77CA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE15E8D9-2B10-4D74-926D-28EC4FAD942F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE15E8D9-2B10-4D74-926D-28EC4FAD942F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE15E8D9-2B10-4D74-926D-28EC4FAD942F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE15E8D9-2B10-4D74-926D-28EC4FAD942F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D877B3-00B4-4091-97FD-19C5EF2F85C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D877B3-00B4-4091-97FD-19C5EF2F85C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D877B3-00B4-4091-97FD-19C5EF2F85C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D877B3-00B4-4091-97FD-19C5EF2F85C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1041B40B-9DBE-459A-8882-1B02579F876D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1041B40B-9DBE-459A-8882-1B02579F876D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1041B40B-9DBE-459A-8882-1B02579F876D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1041B40B-9DBE-459A-8882-1B02579F876D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495F6E14-DA26-4D52-9059-EFE6910A78BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495F6E14-DA26-4D52-9059-EFE6910A78BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495F6E14-DA26-4D52-9059-EFE6910A78BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495F6E14-DA26-4D52-9059-EFE6910A78BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{495F6E14-DA26-4D52-9059-EFE6910A78BC} = {40DCDDB3-B08F-4DA7-8356-42101241ADB8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5717479-CD9A-4474-85C3-3D286D0DB3FB}
+	EndGlobalSection
+EndGlobal
