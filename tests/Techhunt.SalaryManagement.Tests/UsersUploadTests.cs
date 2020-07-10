@@ -23,7 +23,8 @@ namespace Techhunt.SalaryManagement.Tests
             var client = _factory.CreateClient();
 
             // Act             
-            using (var csvFile = File.OpenRead(@"CsvFiles\ValidWithOneRecord.csv"))
+            var path = Path.Combine("CsvFiles","ValidWithOneRecord.csv");
+            using (var csvFile = File.OpenRead(path))
             using (var fileContent = new StreamContent(csvFile))
             using (var formData = new MultipartFormDataContent())
             {
