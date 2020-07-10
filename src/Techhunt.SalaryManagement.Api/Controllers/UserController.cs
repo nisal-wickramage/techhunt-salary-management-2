@@ -21,7 +21,7 @@ namespace Techhunt.SalaryManagement.Api.Controllers
             [FromQuery]decimal minSalary,
             [FromQuery]decimal maxSalary,
             [FromQuery]long offset,
-            [FromQuery]long limit,
+            [FromQuery]int limit,
             [FromQuery]string sort)
         {
             return Ok();
