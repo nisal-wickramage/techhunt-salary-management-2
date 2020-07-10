@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Techhunt.SalaryManagement.Api.Controllers
 {
@@ -11,5 +7,11 @@ namespace Techhunt.SalaryManagement.Api.Controllers
     [ApiController]
     public class UserController : Controller
     {
+        [HttpPost]
+        [Route("upload")]
+        public async Task<IActionResult> Upload()
+        {
+            return Ok();
+        }
     }
 }
