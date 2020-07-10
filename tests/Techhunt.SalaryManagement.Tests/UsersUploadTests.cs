@@ -23,19 +23,8 @@ namespace Techhunt.SalaryManagement.Tests
         [InlineData("valid-with-non-english.csv")]
         public async Task ValidCsvFilesShouldReturn200(string fileName)
         {
-            // Arrange
-            var client = _factory.CreateClient();
-
-            // Act             
-            var path = Path.Combine("CsvFiles", fileName);
-            using (var csvFile = File.OpenRead(path))
-            using (var fileContent = new StreamContent(csvFile))
-            using (var formData = new MultipartFormDataContent())
-            {
-                formData.Add(fileContent, "file", "ValidWithOneRecord.csv");
-                var response = await client.PostAsync("users/upload", formData);
-                response.EnsureSuccessStatusCode();
-            }
+            var responseHttpStatus = await GetUploadUsersResultCode(fileName);
+            Assert.Equal(HttpStatusCode.OK, responseHttpStatus);
         }
 
         [Theory]
@@ -46,10 +35,14 @@ namespace Techhunt.SalaryManagement.Tests
         [InlineData("invalid-no-headers.csv")]
         public async Task InvalidCsvFilesShouldReturn400(string fileName)
         {
-            // Arrange
+            var responseHttpStatus = await GetUploadUsersResultCode(fileName);
+            Assert.Equal(HttpStatusCode.BadRequest, responseHttpStatus);
+        }
+
+        private async Task<HttpStatusCode> GetUploadUsersResultCode(string fileName)
+        {
             var client = _factory.CreateClient();
 
-            // Act             
             var path = Path.Combine("CsvFiles", fileName);
             using (var csvFile = File.OpenRead(path))
             using (var fileContent = new StreamContent(csvFile))
@@ -58,7 +51,7 @@ namespace Techhunt.SalaryManagement.Tests
                 formData.Add(fileContent, "file", "ValidWithOneRecord.csv");
                 var response = await client.PostAsync("users/upload", formData);
                 var responseHttpStatus = response.StatusCode;
-                Assert.Equal(HttpStatusCode.BadRequest, responseHttpStatus);
+                return responseHttpStatus;
             }
         }
     }
