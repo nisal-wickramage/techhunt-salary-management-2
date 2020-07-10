@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Techhunt.SalaryManagement.Api;
@@ -16,14 +17,17 @@ namespace Techhunt.SalaryManagement.Tests
             _factory = factory;
         }
 
-        [Fact]
-        public async Task ValidCsvFilesShouldReturn200()
+        [Theory]
+        [InlineData("valid-small.csv")]
+        [InlineData("valid-with-comments.csv")]
+        [InlineData("valid-with-non-english.csv")]
+        public async Task ValidCsvFilesShouldReturn200(string fileName)
         {
             // Arrange
             var client = _factory.CreateClient();
 
             // Act             
-            var path = Path.Combine("CsvFiles","ValidWithOneRecord.csv");
+            var path = Path.Combine("CsvFiles", fileName);
             using (var csvFile = File.OpenRead(path))
             using (var fileContent = new StreamContent(csvFile))
             using (var formData = new MultipartFormDataContent())
@@ -31,6 +35,30 @@ namespace Techhunt.SalaryManagement.Tests
                 formData.Add(fileContent, "file", "ValidWithOneRecord.csv");
                 var response = await client.PostAsync("users/upload", formData);
                 response.EnsureSuccessStatusCode();
+            }
+        }
+
+        [Theory]
+        [InlineData("invalid-duplicate-ids.csv")]
+        [InlineData("invalid-duplicate-logins.csv")]
+        [InlineData("invalid-missing-column.csv")]
+        [InlineData("invalid-missing-column-header.csv")]
+        [InlineData("invalid-no-headers.csv")]
+        public async Task InvalidCsvFilesShouldReturn400(string fileName)
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act             
+            var path = Path.Combine("CsvFiles", fileName);
+            using (var csvFile = File.OpenRead(path))
+            using (var fileContent = new StreamContent(csvFile))
+            using (var formData = new MultipartFormDataContent())
+            {
+                formData.Add(fileContent, "file", "ValidWithOneRecord.csv");
+                var response = await client.PostAsync("users/upload", formData);
+                var responseHttpStatus = response.StatusCode;
+                Assert.Equal(HttpStatusCode.BadRequest, responseHttpStatus);
             }
         }
     }
