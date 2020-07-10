@@ -21,5 +21,3 @@ jobs:
       run: dotnet restore src/Techhunt.SalaryManagement.sln
     - name: Build
       run: dotnet build src/Techhunt.SalaryManagement.sln --configuration Release --no-restore
-    - name: Test
-      run: dotnet test src/Techhunt.SalaryManagement.sln --no-restore --verbosity minimal
