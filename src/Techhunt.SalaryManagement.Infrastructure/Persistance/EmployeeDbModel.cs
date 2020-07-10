@@ -8,7 +8,6 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
 {
     public class EmployeeDbModel : Employee
     {
-        [Timestamp]
         public byte[] RowVersion { get; set; }
     }
 }
