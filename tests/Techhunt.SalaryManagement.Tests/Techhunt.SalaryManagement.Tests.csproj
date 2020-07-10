@@ -21,4 +21,10 @@
     <ProjectReference Include="..\..\src\Techhunt.SalaryManagement.Infrastructure\Techhunt.SalaryManagement.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="CsvFiles\ValidWithOneRecord.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
