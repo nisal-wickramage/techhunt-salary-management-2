@@ -8,6 +8,18 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
 {
     public class EmployeeDbModel : Employee
     {
+        public EmployeeDbModel()
+        {
+        }
+
+        public EmployeeDbModel(Employee employee)
+        {
+            Id = employee.Id;
+            Login = employee.Login;
+            Name = employee.Name;
+            Salary = employee.Salary;
+        }
+
         public byte[] RowVersion { get; set; }
     }
 }
