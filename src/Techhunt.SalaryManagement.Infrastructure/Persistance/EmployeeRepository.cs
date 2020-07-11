@@ -19,23 +19,26 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             _dbContext = dbContext;
         }
 
-        public void Create(Employee employee)
+        public async Task Create(Employee employee)
         {
             var employeeRecord = new EmployeeDbModel(employee);
             _dbContext.Add(employeeRecord);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public void Create(IEnumerable<Employee> employees)
+        public async Task Create(IEnumerable<Employee> employees)
         {
             var employeeRecords = employees.Select(e => new EmployeeDbModel(e));
             _dbContext.Add(employeeRecords);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public void Delete(string id)
+        public async Task Delete(string id)
         {
             var employeeRecord = new EmployeeDbModel { Id = id };
             _dbContext.Attach(employeeRecord);
             _dbContext.Employees.Remove(employeeRecord);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Employee>> Get(
@@ -96,16 +99,12 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             return employeeRecord;
         }
 
-        public async Task SaveChanges()
-        {
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public void Update(Employee employee)
+        public async Task Update(Employee employee)
         {
             var employeeRecord = new EmployeeDbModel(employee);
             _dbContext.Attach(employeeRecord);
             _dbContext.Employees.Update(employeeRecord);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

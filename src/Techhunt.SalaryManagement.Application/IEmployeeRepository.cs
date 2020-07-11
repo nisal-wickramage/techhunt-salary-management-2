@@ -15,14 +15,12 @@ namespace Techhunt.SalaryManagement.Application
 
         Task<Employee> Get(string id);
 
-        void Delete(string id);
+        Task Delete(string id);
 
-        void Create(Employee employee);
+        Task Create(Employee employee);
 
-        void Create(IEnumerable<Employee> employees);
+        Task Create(IEnumerable<Employee> employees);
 
-        void Update(Employee employee);
-
-        Task SaveChanges();
+        Task Update(Employee employee);
     }
 }
