@@ -9,6 +9,6 @@ namespace Techhunt.SalaryManagement.Application
 {
     public interface ICsvMapper
     {
-        Task<IEnumerable<Employee>> GetEmployees(MemoryStream stream);
+        IEnumerable<Employee> GetEmployees(MemoryStream stream);
     }
 }

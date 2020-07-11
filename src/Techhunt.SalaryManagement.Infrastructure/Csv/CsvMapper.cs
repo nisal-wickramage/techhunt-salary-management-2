@@ -10,7 +10,7 @@ namespace Techhunt.SalaryManagement.Infrastructure.Csv
 {
     public class CsvMapper : ICsvMapper
     {
-        public async Task<IEnumerable<Employee>> GetEmployees(MemoryStream stream)
+        public IEnumerable<Employee> GetEmployees(MemoryStream stream)
         {
             stream.Position = 0;
             using (var reader = new StreamReader(stream))
