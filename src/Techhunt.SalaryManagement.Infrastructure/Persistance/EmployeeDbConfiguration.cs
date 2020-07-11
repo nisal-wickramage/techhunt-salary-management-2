@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Techhunt.SalaryManagement.Infrastructure.Persistance
 {
-    public class EmployeeDbConfiguration : IEntityTypeConfiguration<EmployeeDbModel>
+    internal class EmployeeDbConfiguration : IEntityTypeConfiguration<EmployeeDbModel>
     {
         public void Configure(EntityTypeBuilder<EmployeeDbModel> builder)
         {
