@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Techhunt.SalaryManagement.Application;
 using Techhunt.SalaryManagement.Domain;
@@ -21,6 +22,16 @@ namespace Techhunt.SalaryManagement.Api.Controllers
         [Route("upload")]
         public async Task<IActionResult> Upload()
         {
+            if (Request.Form.Files.Count != 1)
+            {
+                return BadRequest();
+            }
+            var file = Request.Form.Files[0];
+            using (var stream = new MemoryStream())
+            {
+                file.CopyTo(stream);
+                await _employeeService.Create(stream);
+            }
             return Ok();
         }
 
@@ -32,7 +43,7 @@ namespace Techhunt.SalaryManagement.Api.Controllers
             [FromQuery]int limit,
             [FromQuery]EmployeeSortOptions sort)
         {
-            var users = _employeeService.Get(minSalary, maxSalary, offset, limit, sort);
+            var users = await _employeeService.Get(minSalary, maxSalary, offset, limit, sort);
             return new ObjectResult(users);
         }
 

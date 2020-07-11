@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Techhunt.SalaryManagement.Domain;
 
@@ -8,9 +9,14 @@ namespace Techhunt.SalaryManagement.Application
     {
         private IEmployeeRepository _repository;
 
-        public EmployeeService(IEmployeeRepository repository)
+        private ICsvReader _csvReader;
+
+        public EmployeeService(
+            IEmployeeRepository repository,
+            ICsvReader csvReader)
         {
             _repository = repository;
+            _csvReader = csvReader;
         }
 
 
@@ -19,8 +25,9 @@ namespace Techhunt.SalaryManagement.Application
             await _repository.Create(employee);
         }
 
-        public async Task Create(IEnumerable<Employee> employees)
+        public async Task Create(MemoryStream csvStream)
         {
+            var employees = _csvReader.GetEmployees(csvStream);
             await _repository.Create(employees);
         }
 
