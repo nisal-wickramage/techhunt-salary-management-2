@@ -9,11 +9,11 @@ namespace Techhunt.SalaryManagement.Application
     {
         private IEmployeeRepository _repository;
 
-        private ICsvReader _csvReader;
+        private ICsvMapper _csvReader;
 
         public EmployeeService(
             IEmployeeRepository repository,
-            ICsvReader csvReader)
+            ICsvMapper csvReader)
         {
             _repository = repository;
             _csvReader = csvReader;

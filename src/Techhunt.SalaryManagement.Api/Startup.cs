@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Techhunt.SalaryManagement.Application;
+using Techhunt.SalaryManagement.Infrastructure.Csv;
 using Techhunt.SalaryManagement.Infrastructure.Persistance;
 
 namespace Techhunt.SalaryManagement.Api
@@ -23,6 +24,7 @@ namespace Techhunt.SalaryManagement.Api
         {
             services.AddControllers();
             services.AddTransient<EmployeeService>();
+            services.AddTransient<ICsvMapper, CsvMapper>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddDbContext<SalaryManagementDbContext>(options =>
                 options.UseInMemoryDatabase(databaseName: "SalaryManagement"));
