@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using Techhunt.SalaryManagement.Application;
 using Techhunt.SalaryManagement.Domain;
@@ -29,7 +26,7 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
         public async Task Create(IEnumerable<Employee> employees)
         {
             var employeeRecords = employees.Select(e => new EmployeeDbModel(e));
-            _dbContext.Add(employeeRecords);
+            await _dbContext.AddRangeAsync(employeeRecords);
             await _dbContext.SaveChangesAsync();
         }
 

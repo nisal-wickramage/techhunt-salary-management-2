@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Techhunt.SalaryManagement.Application;
 using Techhunt.SalaryManagement.Domain;
@@ -13,12 +14,14 @@ namespace Techhunt.SalaryManagement.Infrastructure.Csv
         public IEnumerable<Employee> GetEmployees(MemoryStream stream)
         {
             stream.Position = 0;
+            IEnumerable<Employee> employees;
             using (var reader = new StreamReader(stream))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                var records = csv.GetRecords<Employee>();
-                return records;
+                csv.Configuration.RegisterClassMap<CsvEmployeeMap>();
+                employees = csv.GetRecords<Employee>().ToList(); 
             }
+            return employees;
         }
     }
 }
