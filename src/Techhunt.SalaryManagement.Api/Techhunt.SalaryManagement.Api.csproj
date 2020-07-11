@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Techhunt.SalaryManagement.Application\Techhunt.SalaryManagement.Application.csproj" />
     <ProjectReference Include="..\Techhunt.SalaryManagement.Domain\Techhunt.SalaryManagement.Domain.csproj" />
     <ProjectReference Include="..\Techhunt.SalaryManagement.Infrastructure\Techhunt.SalaryManagement.Infrastructure.csproj" />
