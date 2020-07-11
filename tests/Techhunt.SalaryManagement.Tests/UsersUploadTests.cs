@@ -54,5 +54,23 @@ namespace Techhunt.SalaryManagement.Tests
                 return responseHttpStatus;
             }
         }
+
+        [Fact]
+        public async Task MultipleCsvFilesShouldReturn400()
+        {
+            var client = _factory.CreateClient();
+
+            var path = Path.Combine("CsvFiles", "valid-small.csv");
+            using (var csvFile = File.OpenRead(path))
+            using (var fileContent = new StreamContent(csvFile))
+            using (var formData = new MultipartFormDataContent())
+            {
+                formData.Add(fileContent, "file", "ValidWithOneRecord.csv");
+                formData.Add(fileContent, "file2", "ValidWithOneRecord2.csv");
+                var response = await client.PostAsync("users/upload", formData);
+                var responseHttpStatus = response.StatusCode;
+                Assert.Equal(HttpStatusCode.BadRequest, responseHttpStatus);
+            }
+        }
     }
 }
