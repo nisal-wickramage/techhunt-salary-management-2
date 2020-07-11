@@ -19,6 +19,9 @@ namespace Techhunt.SalaryManagement.Infrastructure.Csv
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csv.Configuration.RegisterClassMap<CsvEmployeeMap>();
+                csv.Configuration.Comment = '#';
+                csv.Configuration.AllowComments = true;
+
                 employees = csv.GetRecords<Employee>().ToList(); 
             }
             return employees;
