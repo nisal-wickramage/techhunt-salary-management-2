@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,13 +50,17 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             try
             {
                 var employeeRecord = new EmployeeDbModel { Id = id };
-                _dbContext.Attach(employeeRecord);
+                _dbContext.Employees.Attach(employeeRecord);
                 _dbContext.Employees.Remove(employeeRecord);
                 await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException ex)
             {
                 throw new InvalidEmployeeDataException("One or more employee records are being updated by another operation.", ex);
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -69,6 +74,7 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             try
             {
                 var query = _dbContext.Employees
+                    .AsNoTracking()
                     .Where(e => e.Salary <= maxSalary && e.Salary >= minSalary);
 
                 IOrderedQueryable<EmployeeDbModel> orderedQuery;
@@ -126,7 +132,9 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
         {
             try
             {
-                var employeeRecord = await _dbContext.Employees.FirstOrDefaultAsync(e => e.Id.Equals(id));
+                var employeeRecord = await _dbContext.Employees
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(e => e.Id.Equals(id));
                 return employeeRecord;
             }
             catch (DbUpdateConcurrencyException ex)
@@ -140,7 +148,7 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             try
             {
                 var employeeRecord = new EmployeeDbModel(employee);
-                _dbContext.Attach(employeeRecord);
+                _dbContext.Employees.Attach(employeeRecord);
                 _dbContext.Employees.Update(employeeRecord);
                 await _dbContext.SaveChangesAsync();
             }

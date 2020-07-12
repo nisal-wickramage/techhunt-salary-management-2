@@ -50,40 +50,75 @@ namespace Techhunt.SalaryManagement.Api.Controllers
             [FromQuery]int limit,
             [FromQuery][ModelBinder(Name = "sort")]EmployeeSortOptions sort)
         {
-            var users = await _employeeService.Get(minSalary, maxSalary, offset, limit, sort);
-            return new ObjectResult(users);
+            try
+            {
+                var users = await _employeeService.Get(minSalary, maxSalary, offset, limit, sort);
+                return new ObjectResult(users);
+            }
+            catch (InvalidEmployeeDataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
         [Route("{id}")]
         public async Task<IActionResult> Create([FromRoute] string id, [FromBody]Employee employee)
         {
-            await _employeeService.Create(employee);
-            return Ok();
+            try
+            {
+                await _employeeService.Create(employee);
+                return Ok();
+            }
+            catch (InvalidEmployeeDataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPatch]
         [Route("{id}")]
         public async Task<IActionResult> Update([FromRoute] string id, [FromBody] Employee employee)
         {
-            await _employeeService.Update(employee);
-            return Ok();
+            try
+            {
+                await _employeeService.Update(employee);
+                return Ok();
+            }
+            catch (InvalidEmployeeDataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
         [Route("{id}")]
         public async Task<IActionResult> Read([FromRoute]string id)
         {
-            var user = await _employeeService.Get(id);
-            return new ObjectResult(user);
+            try
+            {
+                var user = await _employeeService.Get(id);
+                return new ObjectResult(user);
+            }
+            catch (InvalidEmployeeDataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete]
         [Route("{id}")]
         public async Task<IActionResult> Delete([FromRoute] string id)
         {
-            await _employeeService.Delete(id);
-            return Ok();
+            try
+            {
+                await _employeeService.Delete(id);
+                return Ok();
+            }
+            catch (InvalidEmployeeDataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

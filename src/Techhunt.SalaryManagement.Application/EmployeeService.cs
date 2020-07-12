@@ -22,6 +22,11 @@ namespace Techhunt.SalaryManagement.Application
 
         public async Task Create(Employee employee)
         {
+            var user = await _repository.Get(employee.Id);
+            if (user != null)
+            {
+                throw new InvalidEmployeeDataException("Employee already exists.");
+            }
             await _repository.Create(employee);
         }
 
@@ -37,6 +42,11 @@ namespace Techhunt.SalaryManagement.Application
 
         public async Task Delete(string id)
         {
+            var user = await Get(id);
+            if (user is null)
+            {
+                throw new InvalidEmployeeDataException("Employee does not exists.");
+            }
             await _repository.Delete(id);
         }
 
@@ -52,11 +62,21 @@ namespace Techhunt.SalaryManagement.Application
 
         public async Task<Employee> Get(string id)
         {
-            return await _repository.Get(id);
+            var user = await _repository.Get(id);
+            if (user is null)
+            {
+                throw new InvalidEmployeeDataException("Employee does not exists.");
+            }
+            return user;
         }
 
         public async Task Update(Employee employee)
         {
+            var user = await Get(employee.Id);
+            if (user is null)
+            {
+                throw new InvalidEmployeeDataException("Employee does not exists.");
+            }
             await _repository.Update(employee);
         }
     }
