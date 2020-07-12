@@ -28,6 +28,7 @@ namespace Techhunt.SalaryManagement.Application
         public async Task Create(MemoryStream csvStream)
         {
             var employees = _csvReader.GetEmployees(csvStream);
+            employees.AssertNonZeroRecords();
             employees.AssertValidIndividualRecords();
             employees.AssertNoDuplicateRecords();
 

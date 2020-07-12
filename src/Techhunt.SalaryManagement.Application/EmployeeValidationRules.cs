@@ -17,6 +17,15 @@ namespace Techhunt.SalaryManagement.Application
             }
         }
 
+        public static void AssertNonZeroRecords(this IEnumerable<Employee> employees)
+        {
+            var isAllRecordsValid = employees.Any();
+            if (!isAllRecordsValid)
+            {
+                throw new InvalidEmployeeDataException("There are no records.");
+            }
+        }
+
         public static void AssertNoDuplicateRecords(this IEnumerable<Employee> employees)
         {
             var hasDuplicateIds = employees.GroupBy(e => e.Id).Select(eg => eg).Count() != employees.Count();
