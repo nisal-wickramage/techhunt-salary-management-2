@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="CsvFiles\seed-data.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="CsvFiles\invalid-headers-only.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

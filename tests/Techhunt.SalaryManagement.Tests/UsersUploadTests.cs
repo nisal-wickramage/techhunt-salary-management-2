@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -62,7 +61,6 @@ namespace Techhunt.SalaryManagement.Tests
         public async Task MultipleCsvFilesShouldReturn400()
         {
             var client = _factory.CreateClient();
-
             var path = Path.Combine("CsvFiles", "valid-small.csv");
             using (var csvFile = File.OpenRead(path))
             using (var fileContent = new StreamContent(csvFile))
