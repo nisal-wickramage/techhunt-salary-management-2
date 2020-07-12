@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -21,7 +22,14 @@ namespace Techhunt.SalaryManagement.Infrastructure.Csv
                 csv.Configuration.Comment = '#';
                 csv.Configuration.AllowComments = true;
 
-                employees = csv.GetRecords<Employee>().ToList(); 
+                try
+                {
+                    employees = csv.GetRecords<Employee>().ToList();
+                }
+                catch (HeaderValidationException ex)
+                {
+                    throw new InvalidEmployeeDataException("Csv file is missing one or more field(s)/header(s).", ex);
+                }
             }
             return employees;
         }
