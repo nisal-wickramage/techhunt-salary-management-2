@@ -27,8 +27,8 @@ namespace Techhunt.SalaryManagement.Tests
         public async Task ValidParametersShouldReturn200(
             decimal minSalary,
             decimal maxSalary,
-            long offset,
-            long limit,
+            int offset,
+            int limit,
             string sort)
         {
             var response = await GetUserDashboardResultCode(minSalary, maxSalary, offset, limit, sort);
@@ -41,8 +41,8 @@ namespace Techhunt.SalaryManagement.Tests
         public async Task InvalidParametersShouldReturn400(
             decimal minSalary,
             decimal maxSalary,
-            long offset,
-            long limit,
+            int offset,
+            int limit,
             string sort)
         {
             var response = await GetUserDashboardResultCode(minSalary, maxSalary, offset,limit, sort);
