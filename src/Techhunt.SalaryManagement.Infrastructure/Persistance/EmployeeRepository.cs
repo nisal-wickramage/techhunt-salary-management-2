@@ -75,7 +75,11 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
 
                 orderedQuery = GetOrderedQuery(query, sort);
 
-                return await orderedQuery.Skip(offset).Take(limit).Select(e => e as Employee).ToListAsync();
+                var employees =  await orderedQuery.Skip(offset).Take(limit)
+                    .Select(e => e as Employee)
+                    .ToListAsync();
+
+                return employees;
             }
             catch (DbUpdateConcurrencyException ex)
             {

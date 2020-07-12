@@ -12,9 +12,9 @@ namespace Techhunt.SalaryManagement.Tests
 {
     public class UserCRUDTests : IClassFixture<SalaryManagementWebApplicationFactory<Startup>>
     {
-        private readonly WebApplicationFactory<Startup> _factory;
+        private readonly SalaryManagementWebApplicationFactory<Startup> _factory;
 
-        public UserCRUDTests(WebApplicationFactory<Startup> factory)
+        public UserCRUDTests(SalaryManagementWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
         }
