@@ -15,6 +15,9 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
                 .HasColumnType("nvarchar(6)")
                 .IsRequired();
 
+            builder.HasIndex(e => e.Login)
+                .IsUnique();
+
             builder.Property(e => e.Login)
                 .HasColumnName("Login")
                 .HasColumnType("nvarchar(50)")
