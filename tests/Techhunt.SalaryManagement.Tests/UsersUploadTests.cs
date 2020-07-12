@@ -8,11 +8,11 @@ using Xunit;
 
 namespace Techhunt.SalaryManagement.Tests
 {
-    public class UsersUploadTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class UsersUploadTests : IClassFixture<SalaryManagementWebApplicationFactory<Startup>>
     {
-        private readonly WebApplicationFactory<Startup> _factory;
+        private readonly SalaryManagementWebApplicationFactory<Startup> _factory;
 
-        public UsersUploadTests(WebApplicationFactory<Startup> factory)
+        public UsersUploadTests(SalaryManagementWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
         }

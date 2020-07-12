@@ -2,11 +2,12 @@
 using System.Net;
 using System.Threading.Tasks;
 using Techhunt.SalaryManagement.Api;
+using Techhunt.SalaryManagement.Infrastructure.Persistance;
 using Xunit;
 
 namespace Techhunt.SalaryManagement.Tests
 {
-    public class UserDashboardTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class UserDashboardTests : IClassFixture<SalaryManagementWebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
@@ -50,6 +51,7 @@ namespace Techhunt.SalaryManagement.Tests
         {
             var url = $"users?minSalary={minSalary}&maxSalary={maxSalary}&offset{offset}&limit{limit}&sort{sort}";
             var client = _factory.CreateClient();
+            var service = _factory.Server.Host.Services.GetService(typeof(SalaryManagementDbContext));
             var response = await client.GetAsync(url);
             var responseHttpStatus = response.StatusCode;
             return responseHttpStatus;

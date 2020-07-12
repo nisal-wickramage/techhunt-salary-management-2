@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Techhunt.SalaryManagement.Tests
 {
-    public class UserCRUDTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class UserCRUDTests : IClassFixture<SalaryManagementWebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
