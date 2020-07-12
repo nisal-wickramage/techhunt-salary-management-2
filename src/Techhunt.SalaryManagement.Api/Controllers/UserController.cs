@@ -48,7 +48,7 @@ namespace Techhunt.SalaryManagement.Api.Controllers
             [FromQuery]decimal maxSalary,
             [FromQuery]int offset,
             [FromQuery]int limit,
-            [FromQuery]EmployeeSortOptions sort)
+            [FromQuery][ModelBinder(Name = "sort")]EmployeeSortOptions sort)
         {
             var users = await _employeeService.Get(minSalary, maxSalary, offset, limit, sort);
             return new ObjectResult(users);

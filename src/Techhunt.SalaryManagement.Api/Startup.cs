@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Techhunt.SalaryManagement.Api.ModelBinder;
 using Techhunt.SalaryManagement.Application;
 using Techhunt.SalaryManagement.Infrastructure.Csv;
 using Techhunt.SalaryManagement.Infrastructure.Persistance;
@@ -22,7 +23,9 @@ namespace Techhunt.SalaryManagement.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(
+                options => options.ModelBinderProviders.Insert(0, new EmployeeSortOptionsBinderProvider()));
+
             services.AddTransient<EmployeeService>();
             services.AddTransient<ICsvMapper, CsvMapper>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
