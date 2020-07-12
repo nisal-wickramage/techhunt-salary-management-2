@@ -33,7 +33,6 @@ namespace Techhunt.SalaryManagement.Tests
         {
             var response = await GetUserDashboardResultCode(minSalary, maxSalary, offset, limit, sort);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(16, await response.GetResponseItemCount());
         }
 
         [Theory]
