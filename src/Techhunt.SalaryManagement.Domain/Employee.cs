@@ -13,5 +13,21 @@ namespace Techhunt.SalaryManagement.Domain
         public string Name { get; set; }
 
         public decimal Salary { get; set; }
+
+        public bool IsValid 
+        {
+            get
+            {
+                var isValid = true;
+                if (string.IsNullOrWhiteSpace(Id) ||
+                    string.IsNullOrWhiteSpace(Login) ||
+                    string.IsNullOrWhiteSpace(Name) ||
+                    Salary <= 0)
+                {
+                    isValid = false;
+                }
+                return isValid;
+            }
+        }
     }
 }

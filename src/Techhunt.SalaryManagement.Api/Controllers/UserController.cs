@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.IO;
 using System.Threading.Tasks;
 using Techhunt.SalaryManagement.Application;
@@ -24,15 +23,23 @@ namespace Techhunt.SalaryManagement.Api.Controllers
         {
             if (Request.Form.Files.Count != 1)
             {
-                return BadRequest();
+                return BadRequest("Request contains more than one attachement.");
             }
-            var file = Request.Form.Files[0];
-            using (var stream = new MemoryStream())
+
+            try
             {
-                file.CopyTo(stream);
-                await _employeeService.Create(stream);
+                var file = Request.Form.Files[0];
+                using (var stream = new MemoryStream())
+                {
+                    file.CopyTo(stream);
+                    await _employeeService.Create(stream);
+                }
+                return Ok();
             }
-            return Ok();
+            catch (InvalidEmployeeDataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
