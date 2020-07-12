@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -22,7 +21,7 @@ namespace Techhunt.SalaryManagement.Tests
         [Fact]
         public async Task ReadUserValidUserIdShouldReturn200()
         {
-            var responseHttpStatus = await ReadUserById("e0001");
+            var responseHttpStatus = await ReadUserById("500");
             Assert.Equal(HttpStatusCode.OK, responseHttpStatus);
         }
 
@@ -45,7 +44,7 @@ namespace Techhunt.SalaryManagement.Tests
         [Fact]
         public async Task DeleteUserValidUserIdShouldReturn200()
         {
-            var responseHttpStatus = await DeleteUserById("e0001");
+            var responseHttpStatus = await DeleteUserById("502");
             Assert.Equal(HttpStatusCode.OK, responseHttpStatus);
         }
 
@@ -66,7 +65,7 @@ namespace Techhunt.SalaryManagement.Tests
         }
 
         [Theory]
-        [InlineData("e0001","john", "john Doe", 2000.00)]
+        [InlineData("503","john", "john Doe", 2000.00)]
         public async Task UpdateUserValidUserDataShouldReturn200(
             string id, 
             string login, 
@@ -104,7 +103,7 @@ namespace Techhunt.SalaryManagement.Tests
         }
 
         [Theory]
-        [InlineData("e0001", "john", "john Doe", 2000.00)]
+        [InlineData("e0010", "john", "john Doe", 2000.00)]
         public async Task CreateUserValidUserDataShouldReturn200(
             string id,
             string login,
@@ -116,7 +115,7 @@ namespace Techhunt.SalaryManagement.Tests
         }
 
         [Theory]
-        [InlineData("e0001", "john", "john Doe", 2000.00)]
+        [InlineData("500", "john", "john Doe", 2000.00)]
         public async Task CreateUserInvalidUserDataShouldReturn400(
             string id,
             string login,
