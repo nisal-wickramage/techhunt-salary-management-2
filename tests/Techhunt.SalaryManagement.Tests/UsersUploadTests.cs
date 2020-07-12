@@ -24,6 +24,7 @@ namespace Techhunt.SalaryManagement.Tests
         public async Task ValidCsvFilesShouldReturn200(string fileName)
         {
             var responseHttpStatus = await GetUploadUsersResultCode(fileName);
+
             Assert.Equal(HttpStatusCode.OK, responseHttpStatus);
         }
 
@@ -33,6 +34,8 @@ namespace Techhunt.SalaryManagement.Tests
         [InlineData("invalid-missing-column.csv")]
         [InlineData("invalid-missing-column-header.csv")]
         [InlineData("invalid-no-headers.csv")]
+        [InlineData("invalid-empty.csv")]
+        [InlineData("invalid-headers-only.csv")]
         public async Task InvalidCsvFilesShouldReturn400(string fileName)
         {
             var responseHttpStatus = await GetUploadUsersResultCode(fileName);

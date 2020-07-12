@@ -1,10 +1,10 @@
 ﻿id,login,name,salary
-#101,India,Elaine Chaney,6736
+101,India,Elaine Chaney,6736
 102,Chase,Zena Taylor,9866
 103,Amal,Jelani English,5927
 104,Tobias,Noble Guerrero,9710
 105,Vincent,Jermaine Meyers,8462
-#106,Aline,Lana Casey,8827
+106,Aline,Lana Casey,8827
 107,Connor,Kasimir Torres,8313
 108,Gregory,Shelby Sharp,7738
 109,Alexa,Aidan Rivas,7107
@@ -19,7 +19,7 @@
 118,Regina,Cecilia Morse,9746
 119,Vanna,Charde Barron,9792
 120,Charles,Leonard Sellers,8293
-121,Jin,Jack Dickson,6263
+#121,Jin,Jack Dickson,6263
 122,Farrah,Tad Hester,7365
 123,Jaden,Keefe Dodson,8336
 124,Raphael,Beverly Cantrell,9489
@@ -80,7 +80,7 @@
 179,Xantha,Sylvester Melton,7506
 180,Josephine,Dana Cameron,6040
 181,Martina,Joelle Curtis,5575
-182,Jin,Garrison Blanchard,6877
+#182,Jin,Garrison Blanchard,6877
 183,Ariana,Alec Price,6091
 184,Russell,Germaine Gallagher,5780
 185,Odette,Mariam Foley,9165
@@ -96,6 +96,6 @@
 195,Catherine,Danielle Cleveland,6617
 196,Ross,Uriel Walters,6841
 197,Aspen,Plato Durham,6566
-198,Brittany,Claire Lancaster,8314
-199,Steel,Denton Mason,8390
+#198,Brittany,Claire Lancaster,8314
+#199,Steel,Denton Mason,8390
 200,TaShya,Yvonne Nichols,8514
