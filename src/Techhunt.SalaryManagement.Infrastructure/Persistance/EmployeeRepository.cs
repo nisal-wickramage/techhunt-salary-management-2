@@ -18,24 +18,45 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
 
         public async Task Create(Employee employee)
         {
-            var employeeRecord = new EmployeeDbModel(employee);
-            _dbContext.Add(employeeRecord);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var employeeRecord = new EmployeeDbModel(employee);
+                _dbContext.Add(employeeRecord);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new InvalidEmployeeDataException("One or more employee records are being updated by another operation.", ex);
+            }
         }
 
         public async Task Create(IEnumerable<Employee> employees)
         {
-            var employeeRecords = employees.Select(e => new EmployeeDbModel(e));
-            await _dbContext.AddRangeAsync(employeeRecords);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var employeeRecords = employees.Select(e => new EmployeeDbModel(e));
+                await _dbContext.AddRangeAsync(employeeRecords);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new InvalidEmployeeDataException("One or more employee records are being updated by another operation.", ex);
+            }
         }
 
         public async Task Delete(string id)
         {
-            var employeeRecord = new EmployeeDbModel { Id = id };
-            _dbContext.Attach(employeeRecord);
-            _dbContext.Employees.Remove(employeeRecord);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var employeeRecord = new EmployeeDbModel { Id = id };
+                _dbContext.Attach(employeeRecord);
+                _dbContext.Employees.Remove(employeeRecord);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new InvalidEmployeeDataException("One or more employee records are being updated by another operation.", ex);
+            }
         }
 
         public async Task<IEnumerable<Employee>> Get(
@@ -45,14 +66,21 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             int limit, 
             EmployeeSortOptions sort)
         {
-            var query = _dbContext.Employees
-                .Where(e => e.Salary <= maxSalary && e.Salary >= minSalary);
+            try
+            {
+                var query = _dbContext.Employees
+                    .Where(e => e.Salary <= maxSalary && e.Salary >= minSalary);
 
-            IOrderedQueryable<EmployeeDbModel> orderedQuery;
+                IOrderedQueryable<EmployeeDbModel> orderedQuery;
 
-            orderedQuery = GetOrderedQuery(query, sort);
+                orderedQuery = GetOrderedQuery(query, sort);
 
-            return await orderedQuery.Skip(offset).Take(limit).Select(e => e as Employee).ToListAsync();
+                return await orderedQuery.Skip(offset).Take(limit).Select(e => e as Employee).ToListAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new InvalidEmployeeDataException("One or more employee records are being updated by another operation.", ex);
+            }
         }
 
         private IOrderedQueryable<EmployeeDbModel> GetOrderedQuery(
@@ -92,16 +120,30 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
 
         public async Task<Employee> Get(string id)
         {
-            var employeeRecord = await _dbContext.Employees.FirstOrDefaultAsync(e => e.Id.Equals(id));
-            return employeeRecord;
+            try
+            {
+                var employeeRecord = await _dbContext.Employees.FirstOrDefaultAsync(e => e.Id.Equals(id));
+                return employeeRecord;
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new InvalidEmployeeDataException("One or more employee records are being updated by another operation.", ex);
+            }
         }
 
         public async Task Update(Employee employee)
         {
-            var employeeRecord = new EmployeeDbModel(employee);
-            _dbContext.Attach(employeeRecord);
-            _dbContext.Employees.Update(employeeRecord);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                var employeeRecord = new EmployeeDbModel(employee);
+                _dbContext.Attach(employeeRecord);
+                _dbContext.Employees.Update(employeeRecord);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new InvalidEmployeeDataException("One or more employee records are being updated by another operation.", ex);
+            }
         }
     }
 }
