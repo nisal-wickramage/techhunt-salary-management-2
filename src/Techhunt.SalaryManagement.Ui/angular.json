@@ -24,8 +24,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/sb-admin-2.min.css"
             ],
