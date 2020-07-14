@@ -10,6 +10,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
+import { ImportEmployeeComponent } from './components/import-employee/import-employee.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DeleteEmployeeComponent } from './components/delete-employee/delete-emp
     SearchBarComponent,
     EmployeeListComponent,
     EditEmployeeComponent,
-    DeleteEmployeeComponent
+    DeleteEmployeeComponent,
+    ImportEmployeeComponent
   ],
   imports: [
     BrowserModule,
