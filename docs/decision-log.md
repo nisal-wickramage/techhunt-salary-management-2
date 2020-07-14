@@ -10,5 +10,13 @@
 * Naming Convension Guide
     https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines
 * Unit test will be written against Api interface. unit under test will the functionality of the Api endpoint.
+* Db design
+* name employee for domain model and db model rest user
+* patch will update the whole entity
+* Bootstrap was used as the UI library, instead of other popular choices such as Angular Material, Bulma, Foundation etc due to the ease of use. Trade-off is bootstrap depends on jquery and jquery doesn't work well with Angular since jquery directly interacts with DOM.
+
+
+https://code-maze.com/upload-files-dot-net-core-angular/
+
 
     
