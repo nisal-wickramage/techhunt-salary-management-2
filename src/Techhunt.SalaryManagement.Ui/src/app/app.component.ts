@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../app/services/employee.service';
 import { Employee } from './models/employee';
+import { Constants } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,10 @@ export class AppComponent implements OnInit  {
   }
 
   ngOnInit() { 
-    this.employeeService.getEmployees(0, 0, 1, 30).subscribe(data => this.employees = data);
+    this.employeeService.getEmployees(0, 0, 1, Constants.pageSize).subscribe(data => this.employees = data);
+  }
+
+  onNavigation(pageNumber: number): void {
+    this.employeeService.getEmployees(0, 0, pageNumber, Constants.pageSize).subscribe(data => this.employees = data);
   }
 }

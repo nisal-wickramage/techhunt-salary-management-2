@@ -3,7 +3,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <app-header></app-header>
-            <app-employee-list [employees]="employees"></app-employee-list>            
+            <app-employee-list [employees]="employees" (navigated)="onNavigation($event)"></app-employee-list>            
         </div>
         <app-footer></app-footer>
     </div>

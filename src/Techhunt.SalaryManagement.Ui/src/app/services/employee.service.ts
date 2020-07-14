@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { IConfig } from '../models/config';
 import { Employee } from '../models/employee';
+import { Constants} from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,6 @@ import { Employee } from '../models/employee';
 export class EmployeeService {
 
   private config: IConfig;
-  private configUrl = 'assets/config.json';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -19,13 +19,11 @@ export class EmployeeService {
   };
 
   constructor(private httpClient: HttpClient) { 
-    this.config = { employeeUrl:"https://localhost:5001/users"};
-    // this.httpClient.get(this.configUrl,this.httpOptions)
-    //   .subscribe((data: IConfig) => {this.config = data; console.log(data)});
+    this.config = { employeeUrl: Constants.employeeUrl};
   }
 
   getEmployees(minSalary: number, maxSalary: number, page: number, size: number): Observable<Employee[]> {
-    let url = `${this.config.employeeUrl}?minSalary=100&maxSalary=7000&offset=0&limit=30&sort=+name`;
+    let url = `${this.config.employeeUrl}?minSalary=${minSalary}&maxSalary=${maxSalary}&offset=${(page - 1)*size}&limit=${size}&sort=+name`;
     return this.httpClient.get<Employee[]>(url);
   }
 
