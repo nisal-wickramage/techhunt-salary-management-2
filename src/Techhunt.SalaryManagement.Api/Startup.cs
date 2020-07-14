@@ -23,6 +23,16 @@ namespace Techhunt.SalaryManagement.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy.AllowAnyOrigin();
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyHeader();
+                });
+            });
+
             services.AddControllers(
                 options => options.ModelBinderProviders.Insert(0, new EmployeeSortOptionsBinderProvider()));
 
@@ -44,6 +54,8 @@ namespace Techhunt.SalaryManagement.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
