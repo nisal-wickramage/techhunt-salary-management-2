@@ -1,1 +1,107 @@
-<p>employee-list works!</p>
+<div class="container-fluid">
+    <form>
+        <div class="my-3 row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fa fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                    <div class="input-group-prepend is-7">
+                        <div class="px-2">
+                            <p class="my-0"><small>Minimum Salary</small></p>
+                            <p class="my-0"><small><b>Enter Amount</b></small></p>
+                        </div>
+                    </div>
+                    <div class="input-group-prepend">
+                        <div class="py-2 px-3">
+                            <b>
+                                <h5>$</h5>
+                            </b>
+                        </div>
+                    </div>
+                    <input type="number" class="form-control form-control-lg bg-light border-0 small"
+                        placeholder="Minimum Salary..." aria-label="Search" aria-describedby="basic-addon2">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="input-group">
+                    <div class="input-group-prepend is-7">
+                        <div class="px-2">
+                            <p class="my-0"><small>Maximum Salary</small></p>
+                            <p class="my-0"><small><b>Enter Amount</b></small></p>
+                        </div>
+                    </div>
+                    <div class="input-group-prepend">
+                        <div class="py-2 px-3">
+                            <b>
+                                <h5>$</h5>
+                            </b>
+                        </div>
+                    </div>
+                    <input type="number" class="form-control form-control-lg bg-light border-0 small"
+                        placeholder="Maximum Salary..." aria-label="Search" aria-describedby="basic-addon2">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="my-3 d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Employees</h1>
+    </div>
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col col-sm-auto col-xs-3">Id</th>
+                                <th scope="col col-sm-auto col-xs-3">Login</th>
+                                <th scope="col col-sm-auto col-xs-3">Name</th>
+                                <th scope="col col-sm-auto col-xs-3">Salary</th>
+                                <th scope="col col-sm-auto col-xs-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td><a data-toggle="modal" data-target="#importEmployee"><i
+                                            class="fa fa-pencil"></i></a>&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td><i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td><i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
