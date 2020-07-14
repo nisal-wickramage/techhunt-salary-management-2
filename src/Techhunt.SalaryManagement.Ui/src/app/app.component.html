@@ -3,10 +3,9 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <app-header></app-header>
-            <app-employee-list></app-employee-list>
-
-            <app-footer></app-footer>
+            <app-employee-list [employees]="employees"></app-employee-list>            
         </div>
+        <app-footer></app-footer>
     </div>
 </div>
 <app-edit-employee></app-edit-employee>

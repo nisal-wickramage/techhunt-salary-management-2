@@ -19,33 +19,28 @@ export class EmployeeService {
   };
 
   constructor(private httpClient: HttpClient) { 
+    this.config = { employeeUrl:"https://localhost:5001/users"};
+    // this.httpClient.get(this.configUrl,this.httpOptions)
+    //   .subscribe((data: IConfig) => {this.config = data; console.log(data)});
   }
 
-  private getConfig(): void 
-  {
-    this.httpClient.get(this.configUrl)
-      .subscribe((data: IConfig) => this.config = data);
-  }
-
-  getEmployees(minSalary: number, maxSalary: number, page: number, size: number): Observable<Array<Employee>> {
-    let url = `http://localhost:5001/users?minSalary=${minSalary}&maxSalary=${maxSalary}&offset${page*size}&limit=${size}`;
-    return this.httpClient.get<Array<Employee>>(url);
+  getEmployees(minSalary: number, maxSalary: number, page: number, size: number): Observable<Employee[]> {
+    let url = `${this.config.employeeUrl}?minSalary=100&maxSalary=7000&offset=0&limit=30&sort=+name`;
+    return this.httpClient.get<Employee[]>(url);
   }
 
   removeEmployee(id: string): Observable<any> {
-    let url = `http://localhost:5001/users/${id}`;
+    let url = `${this.config.employeeUrl}/${id}`;
     return this.httpClient.delete(url);
   }
 
   editEmployee(employee: Employee): Observable<any> {
-    let url = `http://localhost:5001/users/${id}`;
+    let url = `${this.config.employeeUrl}/${employee.id}`;
     return this.httpClient.patch(url,employee, this.httpOptions);
   }
 
   addEmployee(employee: Employee): Observable<any> {
-    let url = `http://localhost:5001/users/${id}`;
+    let url = `${this.config.employeeUrl}/${employee.id}`;
     return this.httpClient.post(url,employee, this.httpOptions);
   }
-
-
 }

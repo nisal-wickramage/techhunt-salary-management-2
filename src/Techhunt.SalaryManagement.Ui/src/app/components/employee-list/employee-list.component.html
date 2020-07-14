@@ -54,7 +54,7 @@
 
         <div class="col-12">
             <div class="card shadow mb-4">
-                <div class="card-body">
+                <div class="card-body overflow-auto">
                     <table class="table table-borderless">
                         <thead>
                             <tr>
@@ -66,27 +66,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                            <tr *ngFor="let employee of employees">
+                                <td>{{ employee.id }}</td>
+                                <td>{{ employee.login }}</td>
+                                <td>{{ employee.name }}</td>
+                                <td>{{ employee.salary }}</td>
                                 <td><a data-toggle="modal" data-target="#importEmployee"><i
                                             class="fa fa-pencil"></i></a>&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td><i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                <td><i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
                             </tr>
                         </tbody>
                     </table>
