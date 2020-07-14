@@ -12,6 +12,7 @@ import { EditEmployeeComponent } from './components/edit-employee/edit-employee.
 import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
 import { ImportEmployeeComponent } from './components/import-employee/import-employee.component';
 import { DisplayEmployeeComponent } from './components/display-employee/display-employee.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
