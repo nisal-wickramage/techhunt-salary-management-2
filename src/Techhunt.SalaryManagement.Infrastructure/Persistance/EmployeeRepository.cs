@@ -75,7 +75,7 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             {
                 var query = _dbContext.Employees
                     .AsNoTracking()
-                    .Where(e => e.Salary <= maxSalary && e.Salary >= minSalary);
+                    .Where(e => (e.Salary <= maxSalary && e.Salary >= minSalary) || (minSalary == 0 && maxSalary == 0));
 
                 IOrderedQueryable<EmployeeDbModel> orderedQuery;
 
