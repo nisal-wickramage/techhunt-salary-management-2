@@ -25,12 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/sb-admin-2.min.css"
+              "src/sb-admin-2.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/sb-admin-2.min.js"]
+              "src/sb-admin-2.js"]
           },
           "configurations": {
             "production": {
