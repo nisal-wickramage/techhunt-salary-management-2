@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenuPanelComponent } from './components/menu-panel/menu-panel.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     HeaderComponent,
     FooterComponent,
     MenuPanelComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
