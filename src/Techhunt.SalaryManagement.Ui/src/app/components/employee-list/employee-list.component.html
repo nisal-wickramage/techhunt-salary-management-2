@@ -71,8 +71,14 @@
                                 <td>{{ employee.login }}</td>
                                 <td>{{ employee.name }}</td>
                                 <td>{{ employee.salary }}</td>
-                                <td><a data-toggle="modal" data-target="#importEmployee"><i
-                                            class="fa fa-pencil"></i></a>&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
+                                <td>
+                                    <a (click)="selectEmployee(employee.id)" data-toggle="modal" data-target="#editEmployee">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>&nbsp;&nbsp;
+                                    <a (click)="selectEmployee(employee.id)" data-toggle="modal" data-target="#deleteEmployee">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

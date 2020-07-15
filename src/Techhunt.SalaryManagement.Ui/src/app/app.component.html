@@ -3,12 +3,12 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <app-header></app-header>
-            <app-employee-list [employees]="employees" (navigated)="onNavigation($event)"></app-employee-list>            
+            <app-employee-list [employees]="employees" (navigated)="onNavigation($event)" (selectedEmployee)="selectedEmployee($event)"></app-employee-list>            
         </div>
         <app-footer></app-footer>
     </div>
 </div>
 <app-edit-employee></app-edit-employee>
-<app-delete-employee></app-delete-employee>
+<app-delete-employee [employeeId]="selectedEmployeeId" (deleteEmployee)="deleteEmployee()"></app-delete-employee>
 <app-display-employee></app-display-employee>
 <app-import-employee></app-import-employee>

@@ -11,16 +11,17 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   @Input() employees: Employee[];
   @Output() navigated = new EventEmitter<number>();
+  @Output() selectedEmployee = new EventEmitter<string>();
   
   isPreviousPageAvailable = false;
   isNextPageAvailable = false;
   currentPage = 1;
   
   constructor() { }
+  
   ngOnChanges(changes: SimpleChanges): void {
     if(this.employees)
     {
-      console.log(this.employees.length);
       if(this.employees.length === Constants.pageSize)
       {
         this.isNextPageAvailable = true;
@@ -47,7 +48,12 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     this.navigated.emit(this.currentPage);
   }
 
+  selectEmployee(id: string): void {
+    this.selectedEmployee.emit(id);
+  }
+
   ngOnInit(): void {
+    this.selectedEmployee.emit('');
   }
 
 }
