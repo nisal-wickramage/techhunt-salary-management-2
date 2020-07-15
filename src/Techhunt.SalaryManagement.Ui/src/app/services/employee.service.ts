@@ -41,4 +41,11 @@ export class EmployeeService {
     let url = `${this.config.employeeUrl}/${employee.id}`;
     return this.httpClient.post(url,employee, this.httpOptions);
   }
+
+  importEmployees(file:File): Observable<any> {
+    let url = `${this.config.employeeUrl}/upload`;
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.httpClient.post(url, formData, {reportProgress: true, observe: 'events'});
+  }
 }

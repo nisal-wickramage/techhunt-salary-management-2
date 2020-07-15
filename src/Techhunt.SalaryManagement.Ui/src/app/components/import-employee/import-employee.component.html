@@ -3,17 +3,29 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="exampleModalLabel">Import</h5>
+                <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="row my-2">
+                    <div class="col">
+                        <div *ngIf="progress > 0" class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{progress}}%" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        <span class="upload" *ngIf="progress > 0">
+                            {{progress}}%
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
+                            style="display:none;">
+                        <button type="button" class="btn btn-primary" (click)="file.click()">Choose Csv File</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
