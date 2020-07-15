@@ -15,6 +15,48 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
         public EmployeeRepository(SalaryManagementDbContext dbContext)
         {
             _dbContext = dbContext;
+            Init();
+        }
+
+        private void Init()
+        {
+            if (_dbContext.Employees.Any())
+            {
+                return;
+            }
+            _dbContext.Employees.AddRange(new EmployeeDbModel[]
+                {
+                new EmployeeDbModel{ Id = "e0001", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0002", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0003", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0004", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0005", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0006", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0007", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0008", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0009", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0010", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0011", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0012", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0013", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0014", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0015", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0016", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0017", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0018", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0019", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0020", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0021", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0022", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0023", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0024", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0025", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0026", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0027", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0028", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                new EmployeeDbModel{ Id = "e0029", Login = "e0001", Name = "e0001" , Salary = 6000 },
+                });
+            _dbContext.SaveChanges();
         }
 
         public async Task Create(Employee employee)
@@ -72,7 +114,7 @@ namespace Techhunt.SalaryManagement.Infrastructure.Persistance
             EmployeeSortOptions sort)
         {
             try
-            {
+            {   
                 var query = _dbContext.Employees
                     .AsNoTracking()
                     .Where(e => (e.Salary <= maxSalary && e.Salary >= minSalary) || (minSalary == 0 && maxSalary == 0));
