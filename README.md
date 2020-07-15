@@ -2,7 +2,8 @@
 
 This is my attempt at two part tech hunt assignment.
 
-1. AWS Architecture Assignment [see assignment](docs/Symbiosis_Challenge.pdf)
+1. AWS Architecture Assignment 
+    [see assignment](docs/Symbiosis_Challenge.pdf)
     Below is the diagram to support requirements.
 ![click below lucid link for diagram](docs/aws-assignment.jpeg "Logo Title Text 1")
 
@@ -27,7 +28,7 @@ Both components are dockerized. Please follow the steps below to build and run t
 
 # Build 
 1. Clone the git repository
-2. Open a command prompt with admin priviledges, and browser to the root of the repository on your PC.
+2. Open a command prompt with admin priviledges, and browse to the root of the repository on your PC.
 3. Run build.bat file.
 
 # Run
