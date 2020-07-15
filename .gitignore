@@ -350,7 +350,6 @@ MigrationBackup/
 .ionide/
 
 #PDF
-*.pdf
 src/ui design/
 
 # Logs
