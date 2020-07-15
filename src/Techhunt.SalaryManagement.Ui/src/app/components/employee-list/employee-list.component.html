@@ -23,11 +23,11 @@
                             <td>{{ employee.name }}</td>
                             <td>{{ employee.salary }}</td>
                             <td>
-                                <a (click)="selectEmployee(employee.id)" data-toggle="modal"
+                                <a (click)="selectEmployee(employee)" data-toggle="modal"
                                     data-target="#editEmployee">
                                     <i class="fa fa-pencil"></i>
                                 </a>&nbsp;&nbsp;
-                                <a (click)="selectEmployee(employee.id)" data-toggle="modal"
+                                <a (click)="selectEmployee(employee)" data-toggle="modal"
                                     data-target="#deleteEmployee">
                                     <i class="fa fa-trash"></i>
                                 </a>

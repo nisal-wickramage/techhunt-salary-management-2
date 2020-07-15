@@ -11,7 +11,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   @Input() employees: Employee[];
   @Output() navigated = new EventEmitter<number>();
-  @Output() selectedEmployee = new EventEmitter<string>();
+  @Output() selectedEmployee = new EventEmitter<Employee>();
   
   isPreviousPageAvailable = false;
   isNextPageAvailable = false;
@@ -48,12 +48,12 @@ export class EmployeeListComponent implements OnInit, OnChanges {
     this.navigated.emit(this.currentPage);
   }
 
-  selectEmployee(id: string): void {
-    this.selectedEmployee.emit(id);
+  selectEmployee(employee: Employee): void {
+    this.selectedEmployee.emit(employee);
   }
 
   ngOnInit(): void {
-    this.selectedEmployee.emit('');
+    this.selectedEmployee.emit(new Employee());
   }
 
 }

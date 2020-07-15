@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../app/services/employee.service';
 import { Employee } from './models/employee';
 import { Constants } from './constants';
-import { EmployeeSearchParams } from '../../models/employee-search-params';
+import { EmployeeSearchParams } from '../app/models/employee-search-params';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit  {
   title = 'salary-management-ui';
 
   employees: Employee[];
-  selectedEmployeeId:string;
+  selectedEmployee:  Employee;
 
   minSalary = 0;
   maxSalary = 0;
@@ -29,20 +29,26 @@ export class AppComponent implements OnInit  {
   }
 
   onNavigation(pageNumber: number): void {
+    this.pageNumer = pageNumber;
     this.employeeService
     .getEmployees(this.minSalary, this.maxSalary, this.pageNumer, Constants.pageSize)
     .subscribe(data => this.employees = data);
   }
 
-  selectedEmployee(id: string): void {
-    this.selectedEmployeeId = id;
+  setSelectedEmployee(employee: Employee): void {
+    this.selectedEmployee = employee;
   }
 
   deleteEmployee(): void {
-    this.employeeService.removeEmployee(this.selectedEmployeeId).subscribe(data => {      
+    this.employeeService.removeEmployee(this.selectedEmployee.id).subscribe(data => {      
       this.employeeService
       .getEmployees(this.minSalary, this.maxSalary, this.pageNumer, Constants.pageSize)
       .subscribe(data => this.employees = data);
+    });
+  }
+
+  editEmployee(employee:Employee): void {
+    this.employeeService.editEmployee(employee).subscribe(data => { 
     });
   }
 

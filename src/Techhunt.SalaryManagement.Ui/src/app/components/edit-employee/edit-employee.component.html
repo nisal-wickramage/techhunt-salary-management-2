@@ -3,17 +3,41 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <form [formGroup]="editForm">
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Id</label>
+                        <div class="col-sm-10">
+                            <input formControlName="id" type="text" class="form-control" id="colFormLabel" placeholder="col-form-label">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Login</label>
+                        <div class="col-sm-10">
+                            <input formControlName="login" type="text" class="form-control" id="colFormLabel" placeholder="col-form-label">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input formControlName="name" type="text" class="form-control" id="colFormLabel" placeholder="col-form-label">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">Salary</label>
+                        <div class="col-sm-10">
+                            <input formControlName="salary" type="number" class="form-control" id="colFormLabel" placeholder="col-form-label">
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button (click)="saveChanges()" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
