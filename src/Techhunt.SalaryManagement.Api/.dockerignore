@@ -1,0 +1,17 @@
+*/bin
+*/obj
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+.vscode
+**/.toolstarget
+.idea
+*/Techhunt.SalaryManagement.Ui
+*/ui design
+*/docs
+*/.github
+.gitignore
+LICENSE
+README.md
