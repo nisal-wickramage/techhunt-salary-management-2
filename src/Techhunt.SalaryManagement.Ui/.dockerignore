@@ -1,0 +1,18 @@
+*/bin
+*/obj
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+.vscode
+**/.toolstarget
+.idea
+*/node_modules
+*/dist
+*/ui design
+*/docs
+*/.github
+.gitignore
+LICENSE
+README.md
