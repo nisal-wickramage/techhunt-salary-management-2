@@ -11,7 +11,8 @@
         <app-footer></app-footer>
     </div>
 </div>
+<app-add-employee (employeeAdded)=addEmployee($event)></app-add-employee>
 <app-edit-employee [employee]="selectedEmployee" (employeeEdited)=editEmployee($event)></app-edit-employee>
-<app-delete-employee [employeeId]="selectedEmployeeId" (deleteEmployee)="deleteEmployee()"></app-delete-employee>
+<app-delete-employee [employeeId]="selectedEmployee.id" (deleteEmployee)="deleteEmployee()"></app-delete-employee>
 <app-display-employee></app-display-employee>
 <app-import-employee></app-import-employee>

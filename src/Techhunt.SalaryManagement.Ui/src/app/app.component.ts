@@ -52,6 +52,11 @@ export class AppComponent implements OnInit  {
     });
   }
 
+  addEmployee(employee:Employee): void {
+    this.employeeService.addEmployee(employee).subscribe(data => { 
+    });
+  }
+
   search(params: EmployeeSearchParams): void {
     this.minSalary = params.minSalary;
     this.maxSalary = params.maxSalary;

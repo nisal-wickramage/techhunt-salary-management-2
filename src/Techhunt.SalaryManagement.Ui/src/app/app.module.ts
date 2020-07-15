@@ -14,6 +14,7 @@ import { ImportEmployeeComponent } from './components/import-employee/import-emp
 import { DisplayEmployeeComponent } from './components/display-employee/display-employee.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     ImportEmployeeComponent,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
