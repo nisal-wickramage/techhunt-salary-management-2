@@ -1,1 +1,48 @@
-<p>search-bar works!</p>
+<form [formGroup]="searchBar">
+    <div class="my-3 row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fa fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="input-group-prepend is-7">
+                    <div class="px-2">
+                        <p class="my-0"><small>Minimum Salary</small></p>
+                        <p class="my-0"><small><b>Enter Amount</b></small></p>
+                    </div>
+                </div>
+                <div class="input-group-prepend">
+                    <div class="py-2 px-3">
+                        <b>
+                            <h5>$</h5>
+                        </b>
+                    </div>
+                </div>
+                <input type="number" class="form-control form-control-lg bg-light border-0 small"
+                    placeholder="Minimum Salary..." aria-label="Search" aria-describedby="basic-addon2" formControlName="minSalary">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="input-group">
+                <div class="input-group-prepend is-7">
+                    <div class="px-2">
+                        <p class="my-0"><small>Maximum Salary</small></p>
+                        <p class="my-0"><small><b>Enter Amount</b></small></p>
+                    </div>
+                </div>
+                <div class="input-group-prepend">
+                    <div class="py-2 px-3">
+                        <b>
+                            <h5>$</h5>
+                        </b>
+                    </div>
+                </div>
+                <input type="number" class="form-control form-control-lg bg-light border-0 small"
+                    placeholder="Maximum Salary..." aria-label="Search" aria-describedby="basic-addon2" formControlName="maxSalary">
+            </div>
+        </div>
+    </div>
+</form>
+

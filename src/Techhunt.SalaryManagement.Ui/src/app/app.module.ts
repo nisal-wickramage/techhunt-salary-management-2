@@ -13,6 +13,7 @@ import { DeleteEmployeeComponent } from './components/delete-employee/delete-emp
 import { ImportEmployeeComponent } from './components/import-employee/import-employee.component';
 import { DisplayEmployeeComponent } from './components/display-employee/display-employee.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

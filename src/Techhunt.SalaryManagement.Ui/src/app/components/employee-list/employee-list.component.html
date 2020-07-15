@@ -1,96 +1,49 @@
-<div class="container-fluid">
-    <form>
-        <div class="my-3 row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fa fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                    <div class="input-group-prepend is-7">
-                        <div class="px-2">
-                            <p class="my-0"><small>Minimum Salary</small></p>
-                            <p class="my-0"><small><b>Enter Amount</b></small></p>
-                        </div>
-                    </div>
-                    <div class="input-group-prepend">
-                        <div class="py-2 px-3">
-                            <b>
-                                <h5>$</h5>
-                            </b>
-                        </div>
-                    </div>
-                    <input type="number" class="form-control form-control-lg bg-light border-0 small"
-                        placeholder="Minimum Salary..." aria-label="Search" aria-describedby="basic-addon2">
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="input-group">
-                    <div class="input-group-prepend is-7">
-                        <div class="px-2">
-                            <p class="my-0"><small>Maximum Salary</small></p>
-                            <p class="my-0"><small><b>Enter Amount</b></small></p>
-                        </div>
-                    </div>
-                    <div class="input-group-prepend">
-                        <div class="py-2 px-3">
-                            <b>
-                                <h5>$</h5>
-                            </b>
-                        </div>
-                    </div>
-                    <input type="number" class="form-control form-control-lg bg-light border-0 small"
-                        placeholder="Maximum Salary..." aria-label="Search" aria-describedby="basic-addon2">
-                </div>
-            </div>
-        </div>
-    </form>
+<div class="my-3 d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Employees</h1>
+</div>
+<div class="row">
 
-    <div class="my-3 d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Employees</h1>
-    </div>
-    <div class="row">
-
-        <div class="col-12">
-            <div class="card shadow mb-4">
-                <div class="card-body overflow-auto">
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th scope="col col-sm-auto col-xs-3">Id</th>
-                                <th scope="col col-sm-auto col-xs-3">Login</th>
-                                <th scope="col col-sm-auto col-xs-3">Name</th>
-                                <th scope="col col-sm-auto col-xs-3">Salary</th>
-                                <th scope="col col-sm-auto col-xs-3">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let employee of employees">
-                                <td>{{ employee.id }}</td>
-                                <td>{{ employee.login }}</td>
-                                <td>{{ employee.name }}</td>
-                                <td>{{ employee.salary }}</td>
-                                <td>
-                                    <a (click)="selectEmployee(employee.id)" data-toggle="modal" data-target="#editEmployee">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>&nbsp;&nbsp;
-                                    <a (click)="selectEmployee(employee.id)" data-toggle="modal" data-target="#deleteEmployee">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li *ngIf="isPreviousPageAvailable" class="page-item" (click)="moveToPreviousPage()"><a class="page-link">Previous</a></li>
-                            <li *ngIf="isNextPageAvailable" class="page-item" (click)="moveToNextPage()"><a class="page-link">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-body overflow-auto">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col col-sm-auto col-xs-3">Id</th>
+                            <th scope="col col-sm-auto col-xs-3">Login</th>
+                            <th scope="col col-sm-auto col-xs-3">Name</th>
+                            <th scope="col col-sm-auto col-xs-3">Salary</th>
+                            <th scope="col col-sm-auto col-xs-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let employee of employees">
+                            <td>{{ employee.id }}</td>
+                            <td>{{ employee.login }}</td>
+                            <td>{{ employee.name }}</td>
+                            <td>{{ employee.salary }}</td>
+                            <td>
+                                <a (click)="selectEmployee(employee.id)" data-toggle="modal"
+                                    data-target="#editEmployee">
+                                    <i class="fa fa-pencil"></i>
+                                </a>&nbsp;&nbsp;
+                                <a (click)="selectEmployee(employee.id)" data-toggle="modal"
+                                    data-target="#deleteEmployee">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li *ngIf="isPreviousPageAvailable" class="page-item" (click)="moveToPreviousPage()"><a
+                                class="page-link">Previous</a></li>
+                        <li *ngIf="isNextPageAvailable" class="page-item" (click)="moveToNextPage()"><a
+                                class="page-link">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
-
 </div>

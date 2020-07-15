@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../app/services/employee.service';
 import { Employee } from './models/employee';
 import { Constants } from './constants';
+import { EmployeeSearchParams } from '../../models/employee-search-params';
 
 @Component({
   selector: 'app-root',
@@ -43,5 +44,14 @@ export class AppComponent implements OnInit  {
       .getEmployees(this.minSalary, this.maxSalary, this.pageNumer, Constants.pageSize)
       .subscribe(data => this.employees = data);
     });
+  }
+
+  search(params: EmployeeSearchParams): void {
+    this.minSalary = params.minSalary;
+    this.maxSalary = params.maxSalary;
+    this.pageNumer = 1;
+    this.employeeService
+      .getEmployees(this.minSalary, this.maxSalary, this.pageNumer, Constants.pageSize)
+      .subscribe(data => this.employees = data);
   }
 }
