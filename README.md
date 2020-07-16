@@ -2,15 +2,20 @@
 
 This is my attempt at two part tech hunt assignment.
 
-1. AWS Architecture Assignment 
+1. AWS Architecture Assignment.
+
     [see assignment](docs/Symbiosis_Challenge.pdf)
-    Below is the diagram to support requirements.
+
+    Below is the diagram to support requirements. Application layer is migrated from on premise to VMs on AWS. This represents traditional *lift and shift* approach. This will allow cost reductions cutting down server costs by enabling elastic scaling and cutting down operational cost with managed database instances. Next steps will be to understand applications in details to see if they how they can be modified to be hosted in containers or lambdas. This will help to further cut down on operational costs.
+
 ![click below lucid link for diagram](docs/aws-assignment.jpeg "Logo Title Text 1")
 
 [view on Lucid chart](https://app.lucidchart.com/documents/view/11801563-f060-4f66-afed-7e3db07bf1cc)
 
     
-2. Web Application Development [see assignment](docs/TechHunt_TakeHome_Assessment.pdf) 
+2. Web Application Development 
+
+[see assignment](docs/TechHunt_TakeHome_Assessment.pdf) 
 
 MVP scope for a salary management system.
 
@@ -35,3 +40,6 @@ Both components are dockerized. Please follow the steps below to build and run t
 1. Once you are finished with above steps execute the run.bat file.
 2. Go to [http://localhost:4200/](http://localhost:4200/) to view the application
 3. API is awailable on http://localhost:5000/users
+
+# Stopping Services
+1. run stop.bat.
