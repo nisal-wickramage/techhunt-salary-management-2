@@ -4,9 +4,11 @@ This is my attempt at two part tech hunt assignment.
 
 ## 1. AWS Architecture Assignment.
 
-    [see assignment](docs/Symbiosis_Challenge.pdf)
+[see assignment](docs/Symbiosis_Challenge.pdf)
 
-    Below is the diagram to support requirements. Application layer is migrated from on premise to VMs on AWS. This represents traditional *lift and shift* approach. This will allow cost reductions cutting down server costs by enabling elastic scaling and cutting down operational cost with managed database instances. Next steps will be to understand applications in details to see if they how they can be modified to be hosted in containers or lambdas. This will help to further cut down on operational costs.
+Below is the diagram to support requirements. Application layer is migrated from on premise to VMs on AWS. 
+This represents traditional lift and shift approach. This will allow cost reductions cutting down server costs by enabling elastic scaling and cutting down operational cost with managed database instances. 
+Next steps will be to understand applications in details to see if they how they can be modified to be hosted in containers or lambdas. This will help to further cut down on operational costs.
 
 ![click below lucid link for diagram](docs/aws-assignment.jpeg "Logo Title Text 1")
 
