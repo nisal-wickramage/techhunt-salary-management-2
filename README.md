@@ -25,7 +25,7 @@ Application consists of two main compoents
  * API - implemented in ASP.NET Core
  * UI -  implemented in Angular 10
 
-Decision taken through the journey can be seen [here](docs/decision-log.md)
+Decisions taken through the journey can be seen [here](docs/decision-log.md)
 
 Both components are dockerized. Please follow the steps below to build and run the application.
 
