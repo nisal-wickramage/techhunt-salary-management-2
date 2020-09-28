@@ -1,0 +1,8 @@
+version 0.2
+
+phases:
+ build:
+  commands:
+    - dotnet restore src/Techhunt.SalaryManagement.sln
+    - dotnet build src/Techhunt.SalaryManagement.sln --configuration Release --no-restore
+    - dotnet test src/Techhunt.SalaryManagement.sln --no-restore --verbosity minimal
