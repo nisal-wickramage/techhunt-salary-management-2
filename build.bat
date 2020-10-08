@@ -2,4 +2,4 @@ docker build -f src/Techhunt.SalaryManagement.Api/Dockerfile -t nisal/techhunt-a
 cd src/Techhunt.SalaryManagement.Ui
 docker build -t nisal/techhunt-web .
 cd ..
-cd ..
+cd .. 
