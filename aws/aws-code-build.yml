@@ -5,4 +5,3 @@ phases:
             - dotnet restore src/Techhunt.SalaryManagement.sln
             - dotnet build src/Techhunt.SalaryManagement.sln --configuration Release --no-restore
             - dotnet test src/Techhunt.SalaryManagement.sln --no-restore --verbosity minimal
-            - aws --version
