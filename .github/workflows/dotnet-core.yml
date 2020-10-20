@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-    - name: Run CodeBuild
-      uses: aws-actions/aws-codebuild-run-build@v1.0.3
-      with:
-        project-name: github-action-runner-2
-        buildspec-override: aws/aws-code-build.yml
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore src/Techhunt.SalaryManagement.sln
+    - name: Build
+      run: dotnet build src/Techhunt.SalaryManagement.sln --configuration Release --no-restore
+    - name: Test
+      run: dotnet test src/Techhunt.SalaryManagement.sln --no-restore --verbosity minimal
