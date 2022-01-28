@@ -32,3 +32,12 @@ steps:
     patchVersion: '$(Patch)'
     packagesToPack: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
     packDestination: '$(Build.ArtifactStagingDirectory)'
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    publishVstsFeed: 'serverlesshub/wep-app-001'
+    allowPackageConflicts: true
