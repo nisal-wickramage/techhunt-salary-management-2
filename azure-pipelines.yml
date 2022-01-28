@@ -24,10 +24,17 @@ steps:
     zipAfterPublish: True
     projects: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
     
-- task: PublishPipelineArtifact@1
+# - task: PublishPipelineArtifact@1
+#   inputs:
+#     targetPath: '$(Build.ArtifactStagingDirectory)' 
+#     artifactName: 'api-app'
+- task: DotNetCoreCLI@2
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'api-app'
+      command: pack
+      versioningScheme: byBuildNumber
+      majorVersion: '$(Major)'
+      minorVersion: '$(Minor)'
+      patchVersion: '$(Patch)'
 # - task: NuGetCommand@2
 #   inputs:
 #     command: pack
@@ -39,11 +46,11 @@ steps:
 #     packDestination: '$(Build.ArtifactStagingDirectory)'
 #     includeReferencedProjects: true
 
-# - task: NuGetAuthenticate@0
-#   displayName: 'NuGet Authenticate'
-# - task: NuGetCommand@2
-#   displayName: 'NuGet push'
-#   inputs:
-#     command: push
-#     publishVstsFeed: 'serverlesshub/wep-app-001'
-#     allowPackageConflicts: true
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    publishVstsFeed: 'serverlesshub/wep-app-001'
+    allowPackageConflicts: true
