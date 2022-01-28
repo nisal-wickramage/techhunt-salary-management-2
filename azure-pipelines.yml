@@ -22,7 +22,7 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
-    projects: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
+    projects: 'src/**/*.csproj'
 - task: NuGetCommand@2
   inputs:
     command: pack
@@ -30,7 +30,7 @@ steps:
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
-    packagesToPack: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
+    packagesToPack: 'src/**/*.csproj'
     packDestination: '$(Build.ArtifactStagingDirectory)'
 
 - task: NuGetAuthenticate@0
