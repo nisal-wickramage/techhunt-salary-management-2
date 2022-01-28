@@ -11,21 +11,17 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  Major: '1'
+  Minor: '0'
+  Patch: '0'
 
 steps:
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
-    projects: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(e8dcd51a-4d15-4531-94c3-06c5d11f091f)'
-    appType: 'webAppLinux'
-    WebAppName: 'sh-test0001'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'DOTNETCORE|3.1'
+    command: pack
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
+    packagesToPack: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
+    packDestination: '$(Build.ArtifactStagingDirectory)'
