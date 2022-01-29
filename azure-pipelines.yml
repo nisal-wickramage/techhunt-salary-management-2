@@ -13,8 +13,24 @@ variables:
   BuildConfiguration: 'Release'
 
 steps:
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'build'
+#     arguments: '--configuration $(BuildConfiguration)'
+#     projects: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
+    
 - task: DotNetCoreCLI@2
+  displayName: "Publish"
   inputs:
-    command: 'build'
-    arguments: '--configuration $(BuildConfiguration)'
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '-r win-x86 --configuration $(BuildConfiguration) 
+                --output $(build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
     projects: 'src/Techhunt.SalaryManagement.Api/Techhunt.SalaryManagement.Api.csproj'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: 'api-build'
