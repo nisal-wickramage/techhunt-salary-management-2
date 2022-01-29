@@ -19,11 +19,11 @@ steps:
     cd src/Techhunt.SalaryManagement.Ui
     npm install -g @angular/cli@10.0.2
     npm install
-    ng build --prod --output-path '$(build.artifactstagingdirectory)'
+    ng build --prod
   displayName: 'npm install and build'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+    PathtoPublish: 'src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui'
     ArtifactName: 'web-build'
