@@ -15,17 +15,14 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    cd src/Techhunt.SalaryManagement.Ui
-    npm install -g @angular/cli@10.0.2
-    npm install
-    ng build --prod
-    dir
-  displayName: 'npm install and build'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish artifacts'
+- task: Npm@1
   inputs:
-    PathtoPublish: dist/salary-management-ui
-    ArtifactName: $(artifactName)
-    publishLocation: 'Container'       
+    command: 'install'
+    workingDir: 'src/Techhunt.SalaryManagement.Ui'
+
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run build --prod'
+    workingDir: 'src/Techhunt.SalaryManagement.Ui'
