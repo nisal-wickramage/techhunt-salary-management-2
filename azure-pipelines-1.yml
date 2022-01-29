@@ -20,13 +20,12 @@ steps:
     npm install -g @angular/cli@10.0.2
     npm install
     ng build --prod
-    cd ..
-    cd ..
+    dir
   displayName: 'npm install and build'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts'
   inputs:
-    PathtoPublish: src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui
+    PathtoPublish: dist/salary-management-ui
     ArtifactName: $(artifactName)
     publishLocation: 'Container'       
