@@ -5,6 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { IConfig } from '../models/config';
 import { Employee } from '../models/employee';
 import { Constants} from '../constants';
+import config from '../../assets/config.json';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class EmployeeService {
   };
 
   constructor(private httpClient: HttpClient) { 
-    this.config = { employeeUrl: Constants.employeeUrl};
+    this.config = { employeeUrl: config.employeeUrl};
   }
 
   getEmployees(minSalary: number, maxSalary: number, page: number, size: number): Observable<Employee[]> {
