@@ -25,5 +25,5 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui'
     ArtifactName: 'web-build'
