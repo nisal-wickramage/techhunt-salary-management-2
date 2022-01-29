@@ -20,11 +20,18 @@ steps:
     npm install -g @angular/cli@10.0.2
     npm install
     ng build --prod
-    cd dist/salary-management-ui && dir
   displayName: 'npm install and build'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: 'src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'web-build'
