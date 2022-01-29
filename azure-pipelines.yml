@@ -8,8 +8,10 @@ trigger:
     include:
       - master
   paths:
+    include:
+      - src/*
     exclude:
-    - src/Techhunt.SalaryManagement.Ui/*
+      - src/Techhunt.SalaryManagement.Ui/*
 
 pool:
   vmImage: 'windows-latest'
