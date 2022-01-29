@@ -26,3 +26,9 @@ steps:
     command: 'custom'
     customCommand: 'run build --prod'
     workingDir: 'src/Techhunt.SalaryManagement.Ui'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
+  inputs:
+    PathtoPublish: 'src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui'
+    ArtifactName: 'web-app' 
