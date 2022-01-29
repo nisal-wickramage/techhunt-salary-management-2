@@ -22,16 +22,9 @@ steps:
     ng build --prod
   displayName: 'npm install and build'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui/*'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
+  displayName: 'Publish artifacts'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'web-build'
+    PathtoPublish: src/Techhunt.SalaryManagement.Ui/dist/salary-management-ui
+    ArtifactName: $(artifactName)
+    publishLocation: 'Container'       
